@@ -1,4 +1,4 @@
-name: cookbook-dev
+name: rain-gauge-quality-dev
 channels:
   - conda-forge
 dependencies:
