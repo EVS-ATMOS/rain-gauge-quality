@@ -2,7 +2,6 @@
 
 # Rain Gauge Quality Cookbook
 
-[![nightly-build](https://github.com/EVS-ATMOS/rain-gauge-quality/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/EVS-ATMOS/rain-gauge-quality/actions/workflows/nightly-build.yaml)
 [![Binder](http://binder.mypythia.org/badge_logo.svg)](http://binder.mypythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 
 This Project Pythia Cookbook covers working with the Rain Gauge Quality summer internship project at Argonne National Laboratory.
