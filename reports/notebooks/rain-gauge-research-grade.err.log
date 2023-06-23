@@ -18,6 +18,7 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import numpy as np
 import pandas as pd
 import xarray as xr 
+import os
 import matplotlib.pyplot as plt
 ------------------
 

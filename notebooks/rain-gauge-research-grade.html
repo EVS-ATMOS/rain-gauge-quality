@@ -303,6 +303,102 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
    Import libraries
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-novalynx-data">
+   Import NovaLynx Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-novalynx-data">
+   Plot NovaLynx Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-novalynx-accumulated-precipitation">
+   Plot NovaLynx Accumulated Precipitation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-novalynx-data-for-a-specific-case">
+   Plotting NovaLynx Data for a Specific Case
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-start-and-end-time">
+     Select Start and End Time
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-org-apg-data">
+   Import ORG/APG Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-org-apg-data">
+   Plot ORG/APG Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#org-data">
+     ORG Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apg-data">
+     APG Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-org-apg-data-for-a-specific-case">
+   Plotting ORG/APG Data for a Specific Case
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     ORG Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     APG Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-tower-8in-rain-gauge-data">
+   Import Tower 8in Rain Gauge Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-tower-data">
+   Plot Tower Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-tower-rain-gauge-data-for-a-specific-case">
+   Plotting Tower Rain Gauge Data for a Specific Case
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-fd70-data">
+   Import FD70 Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-fd70-data">
+   Plot FD70 Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-fd70-data-for-a-specific-case">
+   Plotting FD70 Data for a Specific Case
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -323,6 +419,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span> 
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
@@ -340,6 +437,332 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="import-novalynx-data">
+<h2>Import NovaLynx Data<a class="headerlink" href="#import-novalynx-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">novalynx_files</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/maggi/ANL_Internship_2023/NovaLynx_12in_Rain_Gauge/data/*.nc&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">novalynx_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">novalynx_files</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-novalynx-data">
+<h2>Plot NovaLynx Data<a class="headerlink" href="#plot-novalynx-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">novalynx_precip</span> <span class="o">=</span> <span class="n">novalynx_ds</span><span class="o">.</span><span class="n">tb_rain_mm_Tot</span>
+<span class="n">novalynx_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NovaLynx Daily Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a4539aaf6af68298fe2a82edabdda30769917d52752fe8d5a7505c716330bb16.png" src="../_images/a4539aaf6af68298fe2a82edabdda30769917d52752fe8d5a7505c716330bb16.png" />
+</div>
+</div>
+</div>
+<div class="section" id="plot-novalynx-accumulated-precipitation">
+<h2>Plot NovaLynx Accumulated Precipitation<a class="headerlink" href="#plot-novalynx-accumulated-precipitation" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accumulated_novalynx_precip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">novalynx_precip</span><span class="p">)</span>
+<span class="n">accumulated_novalynx_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NovaLynx Accumulated Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/362151e744c1ffb4953411c203502b30cb4e408e475e866ed8df711190ceadc8.png" src="../_images/362151e744c1ffb4953411c203502b30cb4e408e475e866ed8df711190ceadc8.png" />
+</div>
+</div>
+</div>
+<div class="section" id="plotting-novalynx-data-for-a-specific-case">
+<h2>Plotting NovaLynx Data for a Specific Case<a class="headerlink" href="#plotting-novalynx-data-for-a-specific-case" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="select-start-and-end-time">
+<h3>Select Start and End Time<a class="headerlink" href="#select-start-and-end-time" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span> <span class="o">=</span> <span class="s1">&#39;2023-05-08 00:000:00&#39;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s1">&#39;2023-05-09 00:00:00&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accum_novalynx_subset</span> <span class="o">=</span> <span class="n">accumulated_novalynx_precip</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">))</span>
+<span class="n">accum_novalynx_subset</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NovaLynx Accumulated Precip for 05/08/2023&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total Precipitation (mm)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/c154fbe0770177a390fa2beedfcaac1cc6afd4e72fd7d27f9cf64d763fe8d945.png" src="../_images/c154fbe0770177a390fa2beedfcaac1cc6afd4e72fd7d27f9cf64d763fe8d945.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-org-apg-data">
+<h2>Import ORG/APG Data<a class="headerlink" href="#import-org-apg-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ORGAPG_files</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/maggi/ANL_Internship_2023/ORG_APG/ORG_APG_data/*.nc&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ORGAPG_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">ORGAPG_files</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-org-apg-data">
+<h2>Plot ORG/APG Data<a class="headerlink" href="#plot-org-apg-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="org-data">
+<h3>ORG Data<a class="headerlink" href="#org-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ORG_precip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ORGAPG_ds</span><span class="o">.</span><span class="n">corr_precip_ORG</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">ORG_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Corrected ORG Daily Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/821cd7475b61ef3c7332ea0c04458ef7351a49c5639659e59f56e5fd911b9a6f.png" src="../_images/821cd7475b61ef3c7332ea0c04458ef7351a49c5639659e59f56e5fd911b9a6f.png" />
+</div>
+</div>
+</div>
+<div class="section" id="apg-data">
+<h3>APG Data<a class="headerlink" href="#apg-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">APG_precip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">corr_precip_APG</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">APG_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Corrected APG Daily Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/abde471076c84870c67c07441ca24b66a5555ec4c0f72118a77a7057a3993f27.png" src="../_images/abde471076c84870c67c07441ca24b66a5555ec4c0f72118a77a7057a3993f27.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-org-apg-data-for-a-specific-case">
+<h2>Plotting ORG/APG Data for a Specific Case<a class="headerlink" href="#plotting-org-apg-data-for-a-specific-case" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="section" id="id1">
+<h3>ORG Data<a class="headerlink" href="#id1" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ORG_precip_subset</span> <span class="o">=</span> <span class="n">ORG_precip</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">))</span>
+<span class="n">ORG_precip_subset</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ORG Precip for 05/08/2023&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total Precipitation (mm)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/3a40b5eafb6be90b4d1a0568b16948fd51adf0a9a30ad4388266d60df316dcd0.png" src="../_images/3a40b5eafb6be90b4d1a0568b16948fd51adf0a9a30ad4388266d60df316dcd0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>APG Data<a class="headerlink" href="#id2" title="Permalink to this headline"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">APG_precip_subset</span> <span class="o">=</span> <span class="n">APG_precip</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">))</span>
+<span class="n">APG_precip_subset</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;APG Precip for 05/08/2023&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total Precipitation (mm)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/ac52a95b17cff13c45e9279b80398a498d66c6d7bc97df68ce5a6fb56265995c.png" src="../_images/ac52a95b17cff13c45e9279b80398a498d66c6d7bc97df68ce5a6fb56265995c.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-tower-8in-rain-gauge-data">
+<h2>Import Tower 8in Rain Gauge Data<a class="headerlink" href="#import-tower-8in-rain-gauge-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tower_datafiles</span> <span class="o">=</span> <span class="n">datafiles</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/maggi/ANL_Internship_2023/Tower_Rain_Gauge/tower_data/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sortedfiles</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">tower_datafiles</span><span class="p">)</span>
+<span class="n">opened_files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">files</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sortedfiles</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;.nc&#39;</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">merged_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">datafiles</span><span class="p">,</span><span class="n">files</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_path</span><span class="p">)</span>
+        <span class="n">opened_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tower_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">opened_files</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-tower-data">
+<h2>Plot Tower Data<a class="headerlink" href="#plot-tower-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tower_precip</span> <span class="o">=</span> <span class="n">tower_ds</span><span class="o">.</span><span class="n">precip</span>
+<span class="n">tower_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tower Rain Gauge Daily Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3a04cc7ba2021453a7c832e4b1d1ec641d730878a5aee531b147ec1d7b7b6eda.png" src="../_images/3a04cc7ba2021453a7c832e4b1d1ec641d730878a5aee531b147ec1d7b7b6eda.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">accumulated_tower_precip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">tower_precip</span><span class="p">)</span>
+<span class="n">accumulated_tower_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tower Rain Gauge Accumulated Precipitation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total Precipitation (mm)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/f17ddb451eb4af823e8cbf6f561a1a80250353ddbeba2a29f952b9c0ba807004.png" src="../_images/f17ddb451eb4af823e8cbf6f561a1a80250353ddbeba2a29f952b9c0ba807004.png" />
+</div>
+</div>
+</div>
+<div class="section" id="plotting-tower-rain-gauge-data-for-a-specific-case">
+<h2>Plotting Tower Rain Gauge Data for a Specific Case<a class="headerlink" href="#plotting-tower-rain-gauge-data-for-a-specific-case" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#tower_precip_subset = tower_precip.sel(time=slice(start_date, end_date))</span>
+<span class="c1">#tower_precip_subset.plot()</span>
+<span class="c1">#plt.title(&#39;Tower Rain Gauge Precip for 05/08/2023&#39;)</span>
+<span class="c1">#plt.xlabel(&#39;Date&#39;)</span>
+<span class="c1">#plt.ylabel(&#39;Total Precipitation (mm)&#39;)</span>
+
+<span class="c1"># This is not working for the time being, working on figuring out the time indexing for this dataset. Coming soon!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-fd70-data">
+<h2>Import FD70 Data<a class="headerlink" href="#import-fd70-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FD70_data</span> <span class="o">=</span> <span class="s2">&quot;C:/Users/maggi/ANL_Internship_2023/FD70_Rain_Gauge/FD70_data/*.nc&quot;</span>
+<span class="n">FD70_ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">FD70_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\maggi\anaconda3\lib\site-packages\xarray\core\indexing.py:1227: PerformanceWarning: Slicing is producing a large chunk. To accept the large
+chunk and silence this warning, set the option
+    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: False}):
+    ...     array[indexer]
+
+To avoid creating the large chunks, set the option
+    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: True}):
+    ...     array[indexer]
+  return self.array[key]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-fd70-data">
+<h2>Plot FD70 Data<a class="headerlink" href="#plot-fd70-data" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FD70_precip</span> <span class="o">=</span> <span class="n">FD70_ds</span><span class="o">.</span><span class="n">precip_accumulation</span><span class="o">-</span><span class="n">FD70_ds</span><span class="o">.</span><span class="n">precip_accumulation</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">FD70_precip</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1a86ebbe820&gt;]
+</pre></div>
+</div>
+<img alt="../_images/5a3c22ecc4c8770f3552b5ed8a043024ec455a20e17b15ad8c499b63af6251d0.png" src="../_images/5a3c22ecc4c8770f3552b5ed8a043024ec455a20e17b15ad8c499b63af6251d0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="plotting-fd70-data-for-a-specific-case">
+<h2>Plotting FD70 Data for a Specific Case<a class="headerlink" href="#plotting-fd70-data-for-a-specific-case" title="Permalink to this headline"><i class="fas fa-link"></i></a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FD70_precip_subset</span> <span class="o">=</span> <span class="n">FD70_precip</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2023-05-11&#39;</span><span class="p">,</span> <span class="s1">&#39;2023-05-12&#39;</span><span class="p">))</span>
+<span class="n">FD70_precip_subset</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;FD70 Precip for 05/11/2023 and 5/12/2023&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Precipitation (mm)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total Precipitation (mm)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/644426dbe7b46d05fc967e480b857616e05a031ccdd335c9361ef5040ddb43ee.png" src="../_images/644426dbe7b46d05fc967e480b857616e05a031ccdd335c9361ef5040ddb43ee.png" />
+</div>
+</div>
+<p>Disclaimer: The FD70 was reporting precipitation when precipitation was not occurring. I chose a different date for this example (not 5/08/23) due to errors I was getting. This data will be more reliable after 6/22/23 as the FD70 windows were cleaned. I will update this notebook after the rainfall event on 6/25/23, and set that as the example case for each rain gauge.</p>
 </div>
 </div>
 
@@ -411,7 +834,7 @@ All code in Pythia Cookbooks is licensed under Apache 2.0. All other non-code co
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 15 June 2023.
+          Last updated on 23 June 2023.
         </p>
       </div>
     </div>
