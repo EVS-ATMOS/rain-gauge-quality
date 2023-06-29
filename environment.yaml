@@ -1,0 +1,29 @@
+# Basic environment for Rain Gauge Project.
+name: rg_env
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.11.4
+  - numpy>=1.24.3
+  - scipy>=1.10.1
+  - xarray>=2023.5.0
+  - matplotlib>=3.7.1
+  - dask>=2023.6.0
+  - distributed>=2023.6.0
+  - pandas>=2.0.2
+  - pint>=0.22
+  - requests>=2.31.0
+  - pre-commit>=3.3.3
+  - pyproj>=2.0.0
+  - cartopy>=0.21.1
+  - skyfield>=1.45
+  - lazy_loader>=0.2
+  - lxml>=4.9.2
+  - act-atmos>=1.4.5
+  - aiohttp>=3.8.4
+  - h5netcdf>=1.2.0
+  - Spyder>=5.4.3
+  - Jupyter>=1.0.0
+  - notebook>=6.5.4
+  - jupyterlab>=4.0.2
+
